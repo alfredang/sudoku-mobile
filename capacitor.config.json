@@ -1,0 +1,16 @@
+{
+  "appId": "com.alfredang.sudoku",
+  "appName": "Sudoku",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": false,
+      "showSpinner": false,
+      "backgroundColor": "#FFF8E7"
+    },
+    "StatusBar": {
+      "style": "LIGHT",
+      "backgroundColor": "#FFF8E7"
+    }
+  }
+}

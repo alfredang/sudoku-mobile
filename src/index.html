@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sudoku</title>
+    <meta
+      name="viewport"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="theme-color" content="#FFF8E7" />
+
+    <link rel="icon" type="image/x-icon" href="./assets/icon/favicon.ico" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+
+    <!-- ===========================
+         SCREEN 1: DIFFICULTY MENU
+         =========================== -->
+    <div id="menu-screen">
+      <h1>Sudoku Fun! 🧩</h1>
+      <p class="subtitle">Pick your challenge!</p>
+      <div class="difficulty-buttons">
+        <button class="btn-difficulty btn-easy" onclick="startGame('easy')">
+          <span class="emoji">😊</span>
+          <span class="label">Easy</span>
+          <span class="desc">15 minutes</span>
+        </button>
+        <button class="btn-difficulty btn-medium" onclick="startGame('medium')">
+          <span class="emoji">🤔</span>
+          <span class="label">Medium</span>
+          <span class="desc">10 minutes</span>
+        </button>
+        <button class="btn-difficulty btn-hard" onclick="startGame('hard')">
+          <span class="emoji">🔥</span>
+          <span class="label">Hard</span>
+          <span class="desc">5 minutes</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ===========================
+         SCREEN 2: GAME
+         =========================== -->
+    <div id="game-screen" class="hidden">
+      <!-- Top bar with difficulty badge and timer -->
+      <div id="top-bar">
+        <span id="difficulty-badge"></span>
+        <span id="timer-display">⏱️ 15:00</span>
+      </div>
+
+      <!-- Message area for friendly feedback -->
+      <div id="message-area"></div>
+
+      <!-- The 9x9 Sudoku board (cells created by JavaScript) -->
+      <div id="board"></div>
+
+      <!-- Number buttons (1-9) and erase -->
+      <div id="number-pad">
+        <button class="btn-number" onclick="enterNumber(1)">1</button>
+        <button class="btn-number" onclick="enterNumber(2)">2</button>
+        <button class="btn-number" onclick="enterNumber(3)">3</button>
+        <button class="btn-number" onclick="enterNumber(4)">4</button>
+        <button class="btn-number" onclick="enterNumber(5)">5</button>
+        <button class="btn-number" onclick="enterNumber(6)">6</button>
+        <button class="btn-number" onclick="enterNumber(7)">7</button>
+        <button class="btn-number" onclick="enterNumber(8)">8</button>
+        <button class="btn-number" onclick="enterNumber(9)">9</button>
+        <button class="btn-number btn-erase" onclick="enterNumber(0)">⌫</button>
+      </div>
+
+      <!-- Action buttons -->
+      <div id="action-buttons">
+        <button class="btn-action" id="btn-giveup" onclick="giveUp()">🏳️ Give Up</button>
+        <button class="btn-action" id="btn-newgame" onclick="showMenu()">🔄 New Game</button>
+      </div>
+    </div>
+
+    <script src="./js/capacitor-init.js" type="module"></script>
+    <script src="./js/game.js"></script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "name": "sudoku-mobile",
+  "version": "1.0.0",
+  "description": "Sudoku mobile game for iOS and Android",
+  "type": "module",
+  "keywords": [
+    "capacitor",
+    "mobile"
+  ],
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.0.2",
+    "@capacitor/app": "^8.0.0",
+    "@capacitor/core": "latest",
+    "@capacitor/haptics": "^8.0.0",
+    "@capacitor/ios": "^8.0.2",
+    "@capacitor/preferences": "^8.0.0",
+    "@capacitor/splash-screen": "latest",
+    "@capacitor/status-bar": "^8.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "latest",
+    "vite": "^5.4.2"
+  },
+  "author": "",
+  "license": "ISC"
+}
