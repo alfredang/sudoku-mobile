@@ -1,8 +1,8 @@
-# Sudoku Mobile
+# Sudoku
 
-A Sudoku puzzle game for iOS and Android, built with Capacitor and vanilla JavaScript.
+A fully native Android Sudoku game, built with Kotlin and Jetpack Compose (Material 3).
 
-Ported from the [web version](https://github.com/alfredang/sudoku) into a native mobile app with haptic feedback, safe area support, and platform-specific integrations.
+Originally a Capacitor/web hybrid, now rewritten as a 100% native Android app — no WebView, no cross-platform runtime.
 
 ## Screenshots
 
@@ -13,96 +13,54 @@ Ported from the [web version](https://github.com/alfredang/sudoku) into a native
 
 ## Features
 
-- **Three difficulty levels** - Easy (15 min), Medium (10 min), Hard (5 min)
-- **Countdown timer** with urgency pulse animation under 30 seconds
-- **Real-time validation** - highlights rule violations as you play
-- **Haptic feedback** - tactile responses on cell selection, number entry, errors, and wins
-- **Solution reveal** - color-coded answers showing your progress
-- **Win celebration** - animated board on puzzle completion
-- **Native feel** - safe area support, status bar theming, Android back button handling, app lifecycle management
+- **Three difficulty levels** — Easy (15 min), Medium (10 min), Hard (5 min)
+- **Countdown timer** with an urgency pulse under 30 seconds
+- **Real-time validation** — highlights rule violations as you play
+- **Haptic feedback** on cell selection, number entry, errors, and wins
+- **Solution reveal** — color-coded answers (givens, your correct entries, auto-filled)
+- **Win celebration** — animated board on completion
 
 ## Tech Stack
 
-- **Capacitor 8** - Native runtime for iOS and Android
-- **Vanilla JavaScript** - No frameworks, ~550 lines of game logic
-- **Vite 5** - Build tool
-- **CSS3** - Grid layout, CSS custom properties, clamp() for responsive sizing
-
-### Capacitor Plugins
-
-| Plugin | Purpose |
-|--------|---------|
-| `@capacitor/haptics` | Tactile feedback on interactions |
-| `@capacitor/status-bar` | Native status bar theming |
-| `@capacitor/splash-screen` | Launch screen management |
-| `@capacitor/app` | Lifecycle events, Android back button |
-| `@capacitor/preferences` | Local storage for game state |
+- **Kotlin** + **Jetpack Compose** (Material 3)
+- **AndroidX Lifecycle ViewModel** for unidirectional state
+- **Gradle** with Kotlin DSL + version catalog (`gradle/libs.versions.toml`)
+- minSdk 24, target/compile SDK 36
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js 18+
-- Xcode 15+ (for iOS)
-- Android Studio (for Android)
+- Android Studio (JDK 21 bundled JBR) and the Android SDK (platform 36)
+- An Android device or emulator
 
-### Install
-
-```bash
-git clone https://github.com/alfredang/sudoku-mobile.git
-cd sudoku-mobile
-npm install
-```
-
-### Run in Browser
+### Build & Run
 
 ```bash
-npm start
+export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+./gradlew :app:installDebug    # build + install on a connected device/emulator
 ```
 
-Opens at http://localhost:5173
-
-### Run on iOS
-
-```bash
-npm run build && npx cap sync
-npx cap open ios
-```
-
-In Xcode: select a simulator, press Cmd+R.
-
-### Run on Android
-
-```bash
-npm run build && npx cap sync
-npx cap open android
-```
-
-In Android Studio: wait for Gradle sync, click the play button.
+Or open the project root in Android Studio and press Run. The debug APK is written to
+`app/build/outputs/apk/debug/app-debug.apk`.
 
 ## Project Structure
 
 ```
-src/
-  index.html              # Game HTML + Capacitor meta tags
-  css/style.css           # Game CSS + mobile adaptations
-  js/capacitor-init.js    # Capacitor plugin initialization
-  public/js/game.js       # Game logic (puzzle generation, validation, UI)
-capacitor.config.json     # Capacitor app configuration
-vite.config.ts            # Vite build configuration
-ios/                      # Xcode project
-android/                  # Android Studio project
+app/src/main/java/com/alfredang/sudoku/
+  SudokuEngine.kt      # Pure game logic: generation, validation, win check
+  GameViewModel.kt     # State management, timer, haptic events
+  MainActivity.kt      # Compose entry point
+  ui/SudokuApp.kt      # All Compose UI (menu, board, number pad)
+  ui/theme/Theme.kt    # Material 3 theme + brand colors
+app/src/main/res/      # Launcher icons, theme, strings
 ```
 
-## Development Workflow
+See [CLAUDE.md](CLAUDE.md) for architecture details.
 
-```bash
-# 1. Edit source files in src/
-# 2. Build and sync to native projects
-npm run build && npx cap sync
-# 3. Run on device/simulator
-npx cap open ios       # or npx cap open android
-```
+## Related
+
+This project (`com.alfredang.sudoku`) is not published on Google Play. The published Tertiary Infotech Sudoku app is **[Tertiary Sudoku on Google Play](https://play.google.com/store/apps/details?id=sg.com.tertiarycourses.sudoku)** ([source](https://github.com/alfredang/sudokuapp-android)).
 
 ## License
 
