@@ -1,11 +1,30 @@
+# Android / Gradle
+.gradle/
+build/
+app/build/
+local.properties
+captures/
+.externalNativeBuild/
+.cxx/
+
+# IDE
 .idea/
-node_modules/
 .vscode/
-*.map
+*.iml
+
+# OS
 .DS_Store
-.sourcemaps
-dist/
-ios/App/Pods/
-android/.gradle/
-android/build/
-android/app/build/
+
+# Secrets & build output (never pushed)
+keystore.properties
+*.jks
+*.keystore
+.env
+.env.*
+.kotlin/
+
+# Distribution archives (rebuildable — never pushed to GitHub)
+*.zip
+
+# Source material the project was derived from — not ours to republish.
+**/reference/

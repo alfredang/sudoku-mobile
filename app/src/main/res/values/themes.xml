@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base theme used before Compose takes over. Keeps the launch window
+         on the game's cream background and hides the action bar. -->
+    <style name="Theme.Sudoku" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/cream_background</item>
+        <item name="android:statusBarColor">@color/cream_background</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>
