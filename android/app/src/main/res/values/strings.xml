@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">Sudoku</string>
-    <string name="title_activity_main">Sudoku</string>
-    <string name="package_name">com.alfredang.sudoku</string>
-    <string name="custom_url_scheme">com.alfredang.sudoku</string>
-</resources>
